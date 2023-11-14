@@ -6,13 +6,13 @@
 /*   By: aawgku-o <aawgku-o@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 03:35:29 by aawgku-o          #+#    #+#             */
-/*   Updated: 2023/11/13 08:33:57 by aawgku-o         ###   ########.fr       */
+/*   Updated: 2023/11/15 03:14:48 by aawgku-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static size_t	get_len_of_line(char *buffer)
+static size_t	get_line_length(char *buffer)
 {
 	size_t	len;
 
@@ -24,7 +24,7 @@ static size_t	get_len_of_line(char *buffer)
 	return (len);
 }
 
-static ssize_t	get_read(int fd, char **buffer)
+static ssize_t	read_line(int fd, char **buffer)
 {
 	ssize_t	len_read;
 
@@ -43,7 +43,7 @@ static ssize_t	get_read(int fd, char **buffer)
 	return (len_read);
 }
 
-static char	*get_line(char **buffer, int fd, int *nl_found)
+static char	*extract_line(char **buffer, int fd, int *nl_found)
 {
 	ssize_t	len_read;
 	char	*line;
@@ -52,11 +52,11 @@ static char	*get_line(char **buffer, int fd, int *nl_found)
 
 	if (*buffer == NULL || ft_strlen(*buffer) == 0)
 	{
-		len_read = get_read(fd, buffer);
+		len_read = read_line(fd, buffer);
 		if (len_read <= 0)
 			return (NULL);
 	}
-	len_line = get_len_of_line(*buffer);
+	len_line = get_line_length(*buffer);
 	if ((*buffer)[len_line - 1] == '\n')
 		*nl_found = 1;
 	line = malloc(len_line + 1);
@@ -82,12 +82,12 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	nl_found = 0;
-	line = get_line(&buffer[fd], fd, &nl_found);
+	line = extract_line(&buffer[fd], fd, &nl_found);
 	if (line == NULL)
 		return (NULL);
 	while (nl_found == 0)
 	{
-		new_line = get_line(&buffer[fd], fd, &nl_found);
+		new_line = extract_line(&buffer[fd], fd, &nl_found);
 		if (new_line == NULL)
 			return (line);
 		line_old = line;

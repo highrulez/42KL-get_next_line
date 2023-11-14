@@ -6,7 +6,7 @@
 /*   By: aawgku-o <aawgku-o@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 12:35:15 by aawgku-o          #+#    #+#             */
-/*   Updated: 2023/11/13 06:58:26 by aawgku-o         ###   ########.fr       */
+/*   Updated: 2023/11/15 05:06:25 by aawgku-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,3 +90,22 @@ char	*get_next_line(int fd)
 	}
 	return (current_line);
 }
+
+// #include <stdio.h>
+// #include <fcntl.h>
+
+// int main(void)
+// {
+// 	int fd;
+// 	char *line;
+
+// 	fd = open("test.txt", O_RDONLY);
+
+// 	printf("\n****FD****\n");
+// 	line = get_next_line(fd);
+// 	printf("%s\n", line);
+// 	free(line);
+
+// 	system("leaks -q a.out");
+// 	return (0);
+// }

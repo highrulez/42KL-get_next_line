@@ -6,7 +6,7 @@
 /*   By: aawgku-o <aawgku-o@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 03:35:29 by aawgku-o          #+#    #+#             */
-/*   Updated: 2023/11/15 03:14:48 by aawgku-o         ###   ########.fr       */
+/*   Updated: 2023/11/15 05:01:47 by aawgku-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,3 +97,53 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
+// #include <stdio.h>
+// #include <fcntl.h>
+
+// int main(void)
+// {
+// 	int fd;
+// 	int fd2;
+// 	int fd3;
+// 	char *line;
+
+// 	fd = open("test.txt", O_RDONLY);
+// 	fd2 = open("test2.txt", O_RDONLY);
+// 	fd3 = open("test3.txt", O_RDONLY);
+
+// 	printf("\n****FD 1****\n");
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	line = get_next_line(fd);
+// 	printf("%s\n", line);
+// 	free(line);
+
+// 	printf("\n****FD 2****\n");
+// 	line = get_next_line(fd2);
+// 	printf("%s", line);
+// 	line = get_next_line(fd2);
+// 	printf("%s", line);
+// 	line = get_next_line(fd2);
+// 	printf("%s", line);
+// 	line = get_next_line(fd2);
+// 	printf("%s\n", line);
+// 	free(line);
+
+// 	printf("****FD 3****\n");
+// 	line = get_next_line(fd3);
+// 	printf("%s", line);
+// 	line = get_next_line(fd3);
+// 	printf("%s", line);
+// 	line = get_next_line(fd3);
+// 	printf("%s", line);
+// 	line = get_next_line(fd3);
+// 	printf("%s\n", line);
+// 	free(line);
+
+// 	system("leaks -q a.out");
+// 	return (0);
+// }
